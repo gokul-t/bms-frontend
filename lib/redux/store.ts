@@ -1,14 +1,15 @@
 /* Core */
-import { configureStore, type ThunkAction, type Action } from '@reduxjs/toolkit'
+import { configureStore, type Action, type ThunkAction } from '@reduxjs/toolkit'
+import { setupListeners } from '@reduxjs/toolkit/query'
 import {
-  useSelector as useReduxSelector,
   useDispatch as useReduxDispatch,
+  useSelector as useReduxSelector,
   type TypedUseSelectorHook,
 } from 'react-redux'
 
 /* Instruments */
-import { reducer } from './rootReducer'
 import { middleware } from './middleware'
+import { reducer } from './rootReducer'
 
 export const reduxStore = configureStore({
   reducer,
@@ -29,3 +30,7 @@ export type ReduxThunkAction<ReturnType = void> = ThunkAction<
   unknown,
   Action
 >
+
+// optional, but required for refetchOnFocus/refetchOnReconnect behaviors
+// see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
+setupListeners(reduxStore.dispatch)

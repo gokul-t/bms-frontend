@@ -1,5 +1,6 @@
 /* Core */
 import { createLogger } from 'redux-logger'
+import { bookApi } from './services'
 
 const middleware = [
   createLogger({
@@ -15,6 +16,9 @@ const middleware = [
     },
     predicate: () => typeof window !== 'undefined',
   }),
+  // Adding the api middleware enables caching, invalidation, polling,
+  // and other useful features of `rtk-query`.
+  bookApi.middleware
 ]
 
 export { middleware }
