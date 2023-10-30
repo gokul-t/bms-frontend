@@ -1,8 +1,8 @@
 'use client'
 
-import Book from '@/app/components/Book';
-import { useGetBookQuery } from '@/lib/redux/services/bookApi';
-
+import Book from '@/app/components/Book'
+import DisplayError from '@/app/components/DisplayError'
+import { useGetBookQuery } from '@/lib/redux/services/book/api'
 
 export default function BookPage({
     params: { id },

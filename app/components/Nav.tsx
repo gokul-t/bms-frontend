@@ -42,6 +42,14 @@ export const Nav = () => {
       >
         Books
       </Link>
+      <Link
+        className={`${styles.link} ${
+          pathname === '/products' ? styles.active : ''
+        }`}
+        href="/products"
+      >
+        Products
+      </Link>
     </nav>
   )
 }

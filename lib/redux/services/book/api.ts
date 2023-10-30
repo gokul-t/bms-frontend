@@ -24,7 +24,7 @@ interface BookResponse {
     book: Book
 }
 
-const url = 'http://localhost:8080/graphql'
+const url = 'http://localhost:8081/graphql'
 
 export const bookApi = createApi({
     reducerPath: 'bookApi',

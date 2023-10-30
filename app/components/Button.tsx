@@ -1,0 +1,25 @@
+export interface IconButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+    icon: string,
+    iconDescription: string
+}
+
+export const IconButton: React.FC<IconButtonProps> = ({ icon, iconDescription, ...rest }) => {
+    return <button {...rest} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <Icon type={icon} />
+        <span className="sr-only">{iconDescription}</span>
+    </button>
+}
+
+export function Icon({ type }: { type: string }) {
+    const iconMap: { [key: string]: JSX.Element } = {
+        'left-arrow': <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"></path>
+        </svg>,
+        'right-arrow': <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+        </svg>
+    }
+    return iconMap[type];
+}
+
+
